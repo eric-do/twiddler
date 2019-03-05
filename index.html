@@ -9,14 +9,15 @@
   <body>
     <script>
       $(document).ready(function(){
+        /* Set up body */
         var $body = $('body');
+        var $tweetSection = $("<div></div>");
         $body.html('');
         $body.addClass("body");
-
-        var $tweetSection = $("<div></div>");
         $tweetSection.addClass("tweet-section");
         $tweetSection.appendTo($body);
 
+        /* Load new posts */
         var $reload = $("<p></p>").text("See new posts");
         $reload.addClass("tweet-card reload");
         $reload.appendTo($tweetSection);
@@ -25,11 +26,23 @@
           location.reload();
         });
 
+        /* Display homepage tweets */
         var index = streams.home.length - 1;
         while(index >= 0){
           var tweet = streams.home[index];
           var $tweet = $('<div></div>');
-          $tweet.text('@' + tweet.user + ': ' + tweet.message);
+          var $tweetText = $('<p>' + tweet.message + '</p>');
+          var $avatar = $('<img class="avatar">');
+          var avatarURL = 'https://api.adorable.io/avatars/285/' + tweet.user;
+          var $username = $('<span class="username">@' + tweet.user + '</strong></span>');
+          $username.addClass("content");
+          $avatar.attr('src', avatarURL);
+          $avatar.appendTo($tweet);
+          $username.appendTo($tweet);
+          $tweetText.appendTo($tweet);
+        //  $tweetText.append('<strong>@' + tweet.user + '</strong><br>' + tweet.message);
+          $tweetText.addClass('tweet-text content');
+
           $tweet.addClass("tweet tweet-card");
           $tweet.appendTo($tweetSection);
           index -= 1;
