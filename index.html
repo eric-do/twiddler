@@ -3,25 +3,38 @@
   <head>
     <script src="jquery.js"></script>
     <script src="data_generator.js"></script>
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Lato:100,300,400">
+    <link rel="stylesheet" href="main.css">
   </head>
   <body>
     <script>
-
       $(document).ready(function(){
         var $body = $('body');
         $body.html('');
+        $body.addClass("body");
+
+        var $tweetSection = $("<div></div>");
+        $tweetSection.addClass("tweet-section");
+        $tweetSection.appendTo($body);
+
+        var $reload = $("<p></p>").text("See new posts");
+        $reload.addClass("tweet-card reload");
+        $reload.appendTo($tweetSection);
+
+        $reload.click(function() {
+          location.reload();
+        });
 
         var index = streams.home.length - 1;
         while(index >= 0){
           var tweet = streams.home[index];
           var $tweet = $('<div></div>');
           $tweet.text('@' + tweet.user + ': ' + tweet.message);
-          $tweet.appendTo($body);
+          $tweet.addClass("tweet tweet-card");
+          $tweet.appendTo($tweetSection);
           index -= 1;
         }
-
       });
-
     </script>
   </body>
 </html>

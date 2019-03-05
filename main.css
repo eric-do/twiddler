@@ -1,0 +1,33 @@
+body {
+  background-color: #e6ecf0;
+  font: 300 16px/22px "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.tweet-section {
+  margin: 0 30%;
+}
+
+.tweet-card {
+  margin: 1px 0;
+
+}
+
+.reload {
+  color: #1DA1F2;
+  background-color: #f5f8fa;
+}
+
+.reload:hover {
+  cursor: pointer;
+  background-color: #e2e6e8;
+}
+
+.tweet {
+  color: black;
+  background-color: white;
+}
+
+.tweet:hover {
+  color: black;
+  background-color: #f5f8fa;
+}
