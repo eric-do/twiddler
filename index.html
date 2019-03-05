@@ -3,6 +3,8 @@
   <head>
     <script src="jquery.js"></script>
     <script src="data_generator.js"></script>
+    <script src="lib/moment.min.js"></script>
+    <script src="lib/moment-with-locales.js"></script>
     <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Lato:100,300,400">
     <link rel="stylesheet" href="main.css">
   </head>
@@ -35,10 +37,13 @@
           var $avatar = $('<img class="avatar">');
           var avatarURL = 'https://api.adorable.io/avatars/285/' + tweet.user;
           var $username = $('<span class="username">@' + tweet.user + '</strong></span>');
-          $username.addClass("content");
+          var $tweetDate = $('<p>' + moment().startOf('hour').fromNow() + '</p>');
+          $tweetDate.addClass('tweet-date content');
+          $username.addClass('content');
           $avatar.attr('src', avatarURL);
           $avatar.appendTo($tweet);
           $username.appendTo($tweet);
+          $tweetDate.appendTo($tweet);
           $tweetText.appendTo($tweet);
         //  $tweetText.append('<strong>@' + tweet.user + '</strong><br>' + tweet.message);
           $tweetText.addClass('tweet-text content');
