@@ -19,19 +19,26 @@ body {
   position: relative;
 }
 
-.post-field {
+.tweet-form {
+  display : flex;
+  align-items : center;
+  position: relative;
+  width: 87%;
+}
+
+.tweet-field {
   resize: none;
   height: 2.3em;
   line-height: 2.3em;
   position: absolute;
   border-radius: 5px;
   border-color: #c6e7fb;
-  width: 90%;
+  width: 100%;
   margin: 0 5%;
-  padding-left: 5px;
+  padding: 0 5px;
 }
 
-.post-field::placeholder {
+.tweet-field::placeholder {
   color: #1DA1F2;
 }
 

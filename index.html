@@ -22,13 +22,17 @@
         $tweetSection.appendTo($body);
 
         /* Add post */
-        var $addPost = $("<div></div>");
-        var $newPostInput = $("<textarea></textarea");
+        var $addPost = $('<div></div>');
+        var $tweetForm = $('<form action="#"></form>');
+        $tweetForm.attr({'id':'tweet-form', 'method':'post', 'name':'tweet-form'});
+        $tweetForm.addClass('tweet-form');
+        $tweetForm.appendTo($addPost);
+        var $newPostInput = $('<textarea></textarea>');
         $addPost.addClass('add-post-section');
         $addPost.appendTo($tweetSection);
-        $newPostInput.addClass('post-field');
-        $newPostInput.attr({'placeholder':'What\'s happening?'});
-        $newPostInput.appendTo($addPost);
+        $newPostInput.addClass('tweet-field');
+        $newPostInput.attr({'placeholder':'What\'s happening?', 'id' : 'new-post'});
+        $newPostInput.appendTo($tweetForm);
 
         /* Click for new posts */
         var $reload = $("<p></p>").text("See new posts");
@@ -46,6 +50,16 @@
 
         /* Display homepage tweets */
         outputTweets(streams.home);
+
+        $(function() {
+          $('#new-post').keypress(function(e){
+            var message = $('#new-post').val();
+            if (e.keyCode === 13 && !e.shiftKey){
+              $('#new-post').val('');
+              console.log('test');
+            }
+          });
+        });
 
         $(function() {
           $('.user-link').click(function() {
