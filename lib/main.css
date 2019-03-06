@@ -13,29 +13,33 @@ body {
 /* Add Post */
 .add-post-section {
   background-color: #E8F5FD;
-  height: 60px;
-  display : flex;
+  display: flex;
   align-items : center;
   position: relative;
+  height: auto;
+  min-height: 100%;
 }
 
 .tweet-form {
-  display : flex;
   align-items : center;
   position: relative;
-  width: 87%;
+  width: 90%;
 }
 
 .tweet-field {
   resize: none;
-  height: 2.3em;
-  line-height: 2.3em;
-  position: absolute;
+  height: 3em;
+  line-height: 2.5em;
   border-radius: 5px;
   border-color: #c6e7fb;
   width: 100%;
-  margin: 0 5%;
+  margin: 2% 6%;
   padding: 0 5px;
+  box-sizing: border-box;
+}
+
+.tweet-field:focus {
+  height: 100px;
 }
 
 .tweet-field::placeholder {
