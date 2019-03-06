@@ -10,7 +10,9 @@
   </head>
   <body>
     <script>
+    var visitor = 'Eric';
       $(document).ready(function(){
+        streams.users[visitor] = [];
         /* Set up body */
         var $body = $('body');
         var $tweetSection = $("<div></div>");
@@ -55,9 +57,15 @@
           $('#new-post').keypress(function(e){
             var message = $('#new-post').val();
             if (e.keyCode === 13 && !e.shiftKey){
-              $('#new-post').val('');
-              console.log('test');
+              $('.tweet-form').submit();
             }
+          });
+        });
+
+        $(function() {
+          $('.tweet-form').submit(function(event){
+            var message = $('#new-post').val();
+            writeTweet(message);
           });
         });
 
@@ -71,7 +79,6 @@
             outputTweets(tweetArray);
           });
         });
-
 
         function outputTweets(tweetArray) {
           $('.tweet-container').remove();
