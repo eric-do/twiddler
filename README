@@ -1,0 +1,35 @@
+# Twiddler
+
+Twiddler is a Twitter clone. This project was done as part of Hack Reactor's Precourse.
+
+## Feature notes
+* All processing is done on one page - index.html
+* All Jquery scripts are contained in lib/scripts.js
+* Human readable datetime formatting was done using moment.js
+
+## Things learned during development
+### Using Jquery on dynamically created content
+There was a problem where the usernames were no longer clickable after loading in new tweets. It turns out not all Jquery functions work on dynamically generated content.
+* .click() and .on() don't work on dynamically generated content
+* For dynamic content, it's best to use .on(), but it needs to be called on a static parent element, passing the dynamically generated child element as a parameter, e.g.
+```javascript
+$('.tweet-container').on('click', '.user-link', function() {
+      var username = this.text.substring(1);
+      var tweetArray = streams.home.filter(function(tweet){
+        return tweet.user === username;
+      });
+      outputTweets(tweetArray);
+    });
+```
+In the example above, .tweet-container is static, but new .user-link are created whenever we load more tweets.
+
+### Scrollbar shifting
+The content of the page would constantly shift to left once a scrollbar appeared. The solution to this was to have the vertical scrollbar always displayed.
+```
+html {
+  overflow-y: scroll;
+}
+```
+### Aligning elements and text
+It was difficult to get elements horizontally/vertically centered.
+This was a great resource: [W3 CSS: Centering Things](https://www.w3.org/Style/Examples/007/center.en.html)

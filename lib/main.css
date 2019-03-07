@@ -1,6 +1,18 @@
+html {
+  overflow-y: scroll;
+}
+
 body {
   background-color: #e6ecf0;
   font: 300 16px/22px Lato, "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+h1 {
+  color: #1DA1F2;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  font-size: 40px;
+  text-align: center;
 }
 
 /* Tweet section */
@@ -16,7 +28,7 @@ body {
   display: flex;
   align-items: center;
   position: relative;
-  height: 100px;
+  height: 80px;
   min-height: 100%;
 }
 
@@ -29,7 +41,7 @@ body {
 
 .tweet-field {
   resize: none;
-  height: 5em;
+  height: 3em;
   line-height: 3em;
   border-radius: 5px;
   border-color: #c6e7fb;
