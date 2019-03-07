@@ -14,28 +14,28 @@ body {
 .add-post-section {
   background-color: #E8F5FD;
   display: flex;
-  align-items : center;
+  align-items: center;
   position: relative;
-  height: auto;
+  height: 100px;
   min-height: 100%;
 }
 
 .tweet-form {
-  align-items : center;
   position: relative;
-  width: 90%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
 }
 
 .tweet-field {
   resize: none;
-  height: 3em;
-  line-height: 2.5em;
+  height: 5em;
+  line-height: 3em;
   border-radius: 5px;
   border-color: #c6e7fb;
-  width: 100%;
-  margin: 2% 6%;
-  padding: 0 5px;
-  box-sizing: border-box;
+  width: 90%;
+  margin: 0;
+  padding: 0 10px;
 }
 
 .tweet-field:focus {
