@@ -9,44 +9,21 @@
     <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Lato:100,300,400">
     <link rel="stylesheet" href="lib/main.css">
   </head>
-  <body>
+  <body class="body">
     <script>
     var visitor = 'Eric';
       $(document).ready(function(){
-        /* Set up body */
-        var $body = $('body');
-        var $tweetSection = $("<div></div>");
-        $body.html('');
-        $body.addClass("body");
-
-        /* Load Tweet section */
-        $tweetSection.addClass("tweet-section");
-        $tweetSection.appendTo($body);
-
-        /* Tweet form */
-        var $addPost = $('<div></div>');
-        var $tweetForm = $('<form action="#"></form>');
-        var $newPostInput = $('<textarea></textarea>');
-        $tweetForm.attr({'id':'tweet-form', 'method':'post', 'name':'tweet-form'});
-        $tweetForm.addClass('tweet-form');
-        $tweetForm.appendTo($addPost);
-        $addPost.addClass('add-post-section');
-        $addPost.appendTo($tweetSection);
-        $newPostInput.addClass('tweet-field');
-        $newPostInput.attr({'placeholder':'What\'s happening?', 'id' : 'new-post'});
-        $newPostInput.appendTo($tweetForm);
-
-        /* Click for new posts */
-        var $reload = $("<p></p>").text("See new posts");
-        $reload.addClass("tweet-card reload");
-        $reload.appendTo($tweetSection);
-        $('.reload').click(function() {
-          outputTweets(streams.home);
-        });
-
-        /* Display homepage tweets */
         outputTweets(streams.home);
       });
     </script>
+    <div class="tweet-section">
+      <div class="add-post-section">
+        <form action="" id="tweet-form" method="post" name="tweet-form" class="tweet-form">
+          <textarea class="tweet-field" placeholder="What's happening?" id="new-post"></textarea>
+        </form>
+      </div>
+      <p class="tweet-card reload">See new posts</p>
+      <div class="tweet-container"></div>
+    </div>
   </body>
 </html>

@@ -6,8 +6,8 @@ body {
 /* Tweet section */
 .tweet-section {
   margin: 0 30%;
-  min-width: 400px;
-  max-width: 588px;
+  min-width: 500px;
+  max-width: 600px;
 }
 
 /* Add Post */
@@ -111,10 +111,12 @@ body {
   font-weight: 400;
   color: #1DA1F2;
   text-decoration: underline;
+  cursor: pointer;
 }
 
 .tweet-date {
   display: inline;
   text-align: right;
   float: right;
+  margin: 0 10px;
 }
