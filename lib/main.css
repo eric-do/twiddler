@@ -39,11 +39,15 @@ body {
 }
 
 .tweet-field:focus {
-  height: 100px;
+
 }
 
 .tweet-field::placeholder {
   color: #1DA1F2;
+}
+
+.tweet-field:focus::placeholder {
+  color: silver;
 }
 
 /* Tweet card */

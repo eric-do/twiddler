@@ -5,6 +5,7 @@
     <script src="data_generator.js"></script>
     <script src="lib/moment.min.js"></script>
     <script src="lib/moment-with-locales.js"></script>
+    <script src="lib/scripts.js"></script>
     <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Lato:100,300,400">
     <link rel="stylesheet" href="lib/main.css">
   </head>
@@ -22,13 +23,13 @@
         $tweetSection.addClass("tweet-section");
         $tweetSection.appendTo($body);
 
-        /* Add post */
+        /* Tweet form */
         var $addPost = $('<div></div>');
         var $tweetForm = $('<form action="#"></form>');
+        var $newPostInput = $('<textarea></textarea>');
         $tweetForm.attr({'id':'tweet-form', 'method':'post', 'name':'tweet-form'});
         $tweetForm.addClass('tweet-form');
         $tweetForm.appendTo($addPost);
-        var $newPostInput = $('<textarea></textarea>');
         $addPost.addClass('add-post-section');
         $addPost.appendTo($tweetSection);
         $newPostInput.addClass('tweet-field');
@@ -39,74 +40,12 @@
         var $reload = $("<p></p>").text("See new posts");
         $reload.addClass("tweet-card reload");
         $reload.appendTo($tweetSection);
-        $reload.click(function() {
-          location.reload();
+        $('.reload').click(function() {
+          outputTweets(streams.home);
         });
 
         /* Display homepage tweets */
         outputTweets(streams.home);
-
-        $(function() {
-          $('#new-post').keypress(function(e){
-            var message = $('#new-post').val();
-            if ((event.keyCode == 10 || event.keyCode == 13) && event.ctrlKey) {
-              //e.preventDefault();
-              $('.tweet-form').submit();
-            }
-          });
-        });
-
-        $(function() {
-          $('.tweet-form').submit(function(event){
-            var message = $('#new-post').val();
-            if (streams.users[visitor] === undefined) { streams.users[visitor] = []; }
-            writeTweet(message);
-          });
-        });
-
-        $(function() {
-          $('.user-link').click(function() {
-            var username = this.text.substring(1);
-            var tweetArray = streams.home.filter(function(tweet){
-              return tweet.user === username;
-            });
-            outputTweets(tweetArray);
-          });
-        });
-
-        function outputTweets(tweetArray) {
-          $('.tweet-container').remove();
-          $tweetContainer = $('<div></div>');
-          $tweetContainer.addClass('tweet-container');
-          for (var i = 0; i < tweetArray.length; i++) {
-            var tweet = tweetArray[i];
-            var $tweet = formatTweet(tweet);
-            $tweet.appendTo($tweetContainer);
-          }
-          $tweetContainer.appendTo($tweetSection);
-        }
-
-        function formatTweet(tweet) {
-          var $tweet = $('<div></div>');
-          var $tweetText = $('<p>' + tweet.message + '</p>');
-          var $avatar = $('<img class="avatar">');
-          var avatarURL = 'https://api.adorable.io/avatars/285/' + tweet.user;
-          var $username = $('<span class="username">@' + tweet.user + '</span>');
-          var $userLink = $('<a></a>');
-          var $tweetDate = $('<p>' + moment(tweet.date).startOf('hour').fromNow() + '</p>');
-          $tweetDate.addClass('tweet-date content');
-          $avatar.attr('src', avatarURL);
-          $avatar.appendTo($tweet);
-          $userLink.addClass('user-link');
-          $userLink.appendTo($tweet);
-          $username.addClass('content');
-          $username.appendTo($userLink);
-          $tweetDate.appendTo($tweet);
-          $tweetText.appendTo($tweet);
-          $tweetText.addClass('tweet-text content');
-          $tweet.addClass("tweet tweet-card");
-          return $tweet;
-        }
       });
     </script>
   </body>
